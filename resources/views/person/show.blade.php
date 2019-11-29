@@ -26,7 +26,7 @@
                 </div>
                 <div class="movies">
                     <li>Movies</li><br>
-                    @foreach($movie->actors as $person)
+                    @foreach($person->act as $movie)
                         <a href="{{route('movie.show', $movie->id)}}"><img src="{{url('covers/'.$movie->cover)}}" alt="{{$movie->title}}" title="{{$movie->title}}"></a>
                     @endforeach
                     <br>

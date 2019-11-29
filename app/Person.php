@@ -11,10 +11,10 @@ class Person extends Model
     ];
 
     public function act(){
-        return $this->belongsToMany('App\Person', 'people_act_movies', 'id_person', 'id_movie');
+        return $this->belongsToMany('App\Movie', 'people_act_movies', 'id_person', 'id_movie');
     }
 
     public function direct(){
-        return $this->belongsToMany('App\Person', 'people_direct_movies', 'id_person', 'id_movie');
+        return $this->belongsToMany('App\Movie', 'people_direct_movies', 'id_person', 'id_movie');
     }
 }

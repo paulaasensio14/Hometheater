@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('title', 'Show movie')  
+@section('title', $movie->title)  
 
 @section('content')
 <div class="bodyShow">
@@ -40,8 +40,10 @@
                     @endforeach
                 </div>
                 <div class="card_right__button">
-                    <a href="{{url($movie->filepath, $movie->filename)}}" target="_blank">WATCH TRAILER</a>
+                    <a class="red" href="{{url($movie->filepath.$movie->filename)}}">WATCH TRAILER</a>
+                    <a class="green" href="{{route('movie.index')}}">BACK HOME</a>
                 </div>
+                
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@ class MovieController extends Controller
     // Show All
     public function index() {
         $movies = Movie::all();
-        return view('movie.page', ['movieList'=>$movies]);
+        return view('movie.index', ['movieList'=>$movies]);
     }
 
     // Form create movie

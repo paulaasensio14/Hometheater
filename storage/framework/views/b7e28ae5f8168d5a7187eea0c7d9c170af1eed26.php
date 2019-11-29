@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', '<?php echo e($movie->title); ?>'); ?>  
+<?php $__env->startSection('title', $movie->title); ?>  
 
 <?php $__env->startSection('content'); ?>
 <div class="bodyShow">
@@ -38,8 +38,10 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <div class="card_right__button">
-                    <a href="<?php echo e(url($movie->filepath, $movie->filename)); ?>" target="_blank">WATCH TRAILER</a>
+                    <a class="red" href="<?php echo e(url($movie->filepath.$movie->filename)); ?>">WATCH TRAILER</a>
+                    <a class="green" href="<?php echo e(route('movie.index')); ?>">BACK HOME</a>
                 </div>
+                
             </div>
         </div>
     </div>

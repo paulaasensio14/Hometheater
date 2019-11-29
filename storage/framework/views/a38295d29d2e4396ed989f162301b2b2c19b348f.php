@@ -21,7 +21,7 @@
             <th>YEAR</th>
             <th>DURATION</th>
             <th>RATING</th>
-            <th>EXTERNAL URL</th>
+            <th>EXTERNAL URL</th>   
             <th>GENRES</th>
             <th>ACTORS</th>
             <th>DIRECTORS</th>

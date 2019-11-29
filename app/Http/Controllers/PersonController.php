@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Person;
+use App\Movie;
 
 class PersonController extends Controller
 {
@@ -46,7 +47,7 @@ class PersonController extends Controller
     // Show one
     public function show($id){
         $person = Person::find($id);
-        return view('person.page', ['person'=>$person]);
+        return view('person.show', ['person'=>$person]);
     }
 
     // Update movie
