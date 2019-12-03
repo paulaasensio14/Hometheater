@@ -119,6 +119,22 @@
   padding: 12px;
 }
 
+.bodyShow .card_right__button form button {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid;
+  padding: 10px 10px 10px 10px;
+  font-size: 12px;
+  transition-property: all;
+  transition-duration: 0.5s;
+  border-radius: 5px;
+  background: none;
+}
+
+.bodyShow .card_right__button form button:hover {
+  padding: 12px;
+}
+
 .green{
   color: #2EC838!important;
   border-color: #2EC838!important;

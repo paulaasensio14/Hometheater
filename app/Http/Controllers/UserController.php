@@ -9,24 +9,23 @@ class UserController extends Controller {
 
     // Show All
     public function index() {
-        $users = User::all();
-        return view('user.page', ['userList'=>$users]);
+        $users = User::simplePaginate(15);
+        return view('user.index', ['userList'=>$users]);
     }
 
     // Form create user
     public function create(){
-        return view('user.create');
+        return view('user.form');
     }
 
     // Create user
     public function store(Request $r){
-        /*
+        
         $r->validate([
-            'name'=> 'required', 
-            'email'=> 'required|email', 
-            'password'=> 'required'
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|max:255'
         ]);
-        */
 
         $user = new User($r->all());
         
@@ -36,7 +35,8 @@ class UserController extends Controller {
 
     // Show one user
     public function show($id){
-        return view('user.page', $id);
+        $user = User::find($id);
+        return view('user.show', ['user'=>$user]);
     }
 
     // Update user
@@ -50,7 +50,7 @@ class UserController extends Controller {
     // Form update user
     public function edit($id){
         $user = User::find($id);
-        return view('user.create', array('user' => $user));
+        return view('user.form', array('user' => $user));
     }
 
     // Delete user

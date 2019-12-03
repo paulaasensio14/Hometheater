@@ -9,43 +9,53 @@
 		</div>
 		<input type="text" class="search" placeholder="Search" />
 		<ul class="menu">
-			<li title="" class="selected"><i class="zmdi zmdi-movie"></i> Movies</li>
-			<li title="Ladies Night"><i class="zmdi zmdi-female"></i> People</li>
-            <li title="Family Friday">
-                <i class="zmdi zmdi-accounts-alt"></i> Users</li>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			<li class="divider">
-				<i class="zmdi zmdi-account-circle"></i> Login
-			</li>
+			<li class="selected"><a href="<?php echo e(route('movie.index')); ?>"><i class="zmdi zmdi-movie"></i> Movies </a></li>
+			<li><a href="<?php echo e(route('person.index')); ?>"><i class="zmdi zmdi-accounts-list"></i> People</a></li>
+			<br><br>
+			<?php if(auth()->guard()->guest()): ?>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<li><a href="<?php echo e(route('home')); ?>"><i class="zmdi zmdi-account-circle"></i> Login </a></li>
+			<?php endif; ?>
+
+			<?php if(auth()->guard()->check()): ?>
+				<br><br><br><br><br><br><br>
+				<li><a href="<?php echo e(route('user.index')); ?>"><i class="zmdi zmdi-accounts-alt"></i> Users </a></li>
+				<li><a href="<?php echo e(route('movie.create')); ?>"><i class="zmdi zmdi-plus"></i> Add movie </a></li>
+				<li><a href="<?php echo e(route('user.create')); ?>"><i class="zmdi zmdi-plus"></i> Add user </a></li>
+				<li><a href="<?php echo e(route('person.create')); ?>"><i class="zmdi zmdi-plus"></i> Add person </a></li>
+				<li><a href="<?php echo e(route('genre.create')); ?>"><i class="zmdi zmdi-plus"></i> Add genre </a></li>
+				<li>
+					<form id="logout" action="<?php echo e(url('/logout')); ?>" method="POST" >
+						<?php echo csrf_field(); ?>
+						<a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout').submit();"><i class="zmdi zmdi-account-circle"> Logout </i></a>
+					</form>				
+				</li>
+			<?php endif; ?>
 		</ul>
 	</div>
 	<div class="main-wrap">
 		<div class="main">
 			<div class="list">
-				<div class="scroll">
-					<button class="scrollTop"><i class="zmdi zmdi-arrow-left"></i></button>
-					<button class="scrollDown"><i class="zmdi zmdi-arrow-right"></i></button>
-				</div>
-				<header>
-					<ul class="filter">
+                <header>
+                    <ul class="filter">
                         <li data-gid="," class="selected">All</li>
-                        <?php $__currentLoopData = $movieList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <?php $__currentLoopData = $movie->genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <li><?php echo e($genre->description); ?></li>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $genreList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><a href="<?php echo e(route('genre.show', $genre->id)); ?>" style="text-decoration: none; color: #444;"><?php echo e($genre->description); ?></a></li>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-					</ul>
-				</header>
-				<div class="content">
+                    </ul>
+                </header>
+                <div class="content">
+                    <?php echo e($movieList->links()); ?>
+
 					<ul class="covers">
-                        <?php $__currentLoopData = $movieList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $movieList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <li>
                             <a href="<?php echo e(route('movie.show', $movie->id)); ?>"><img src="<?php echo e(url('covers/'.$movie->cover)); ?>" alt="<?php echo e($movie->title); ?>"></a>
                             <span><?php echo e($movie->title); ?></span>
                             <small><?php echo e($movie->duration); ?> min</small>
                         </li>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </ul>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>         
 				</div>
 			</div>
 		</div>

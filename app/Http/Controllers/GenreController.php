@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Genre;
 
 class GenreController extends Controller
@@ -15,18 +16,11 @@ class GenreController extends Controller
 
     // Form create
     public function create(){
-        return view('genre.create');
+        return view('genre.form');
     }
 
     // Create
     public function store(Request $r){
-        /*
-        $r->validate([
-            'name'=> 'required', 
-            'email'=> 'required|email', 
-            'password'=> 'required'
-        ]);
-        */
 
         $genre = new Genre($r->all());
         
@@ -36,7 +30,9 @@ class GenreController extends Controller
 
     // Show one
     public function show($id){
-        return view('genre.page', $id);
+        $genreList = Genre::all()->sortBy('description');
+        $movie = DB::select(DB::raw("SELECT DISTINCT movies.* FROM movies INNER JOIN genres_movies ON movies.id = genres_movies.id_movies WHERE genres_movies.id_genres = $id ORDER BY movies.year DESC"));
+        return view('movie.index', ['movieList'=>$movie, 'genreList'=>$genreList]);
     }
 
     // Update
@@ -50,7 +46,7 @@ class GenreController extends Controller
     // Form update
     public function edit($id){
         $genre = Genre::find($id);
-        return view('genre.create', array('genre' => $genre));
+        return view('genre.form', array('genre' => $genre));
     }
 
     // Delete user

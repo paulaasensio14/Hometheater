@@ -164,5 +164,27 @@ class MovieTableSeeder extends Seeder
             'filename' => 'thefaultinourstar.mp4',
             'external_url' => 'https://www.imdb.com/title/tt2582846/?ref_=nv_sr_srsg_0',
         ]);
+
+        DB::table('movies')->insert([
+            'title' => 'Padre no hay mas que uno',
+            'year' => '2019',
+            'duration' => '98',
+            'rating' => '6.2',
+            'cover' => 'padrenohaymasqueuno.jpg',
+            'filepath' => '/movies/',
+            'filename' => 'thefaultinourstar.mp4',
+            'external_url' => 'https://www.imdb.com/title/tt9427166/?ref_=nv_sr_srsg_0',
+        ]);
+
+        DB::table('movies')->insert([
+            'title' => 'Los descendientes 3',
+            'year' => '2019',
+            'duration' => '108',
+            'rating' => '6.8',
+            'cover' => 'descendientes3.jpg',
+            'filepath' => '/movies/',
+            'filename' => 'thefaultinourstar.mp4',
+            'external_url' => 'https://www.imdb.com/title/tt8022928/?ref_=nv_sr_srsg_5',
+        ]);
     }
 }

@@ -40,6 +40,17 @@
                 <div class="card_right__button">
                     <a class="red" href="<?php echo e(url($movie->filepath.$movie->filename)); ?>">WATCH TRAILER</a>
                     <a class="green" href="<?php echo e(route('movie.index')); ?>">BACK HOME</a>
+                    <?php if(auth()->guard()->check()): ?>    
+                        <form style="display:contents" action = "<?php echo e(route('movie.destroy', $movie->id)); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field("DELETE"); ?>
+                            <button title="Delete" class="red" type="submit"><i class="zmdi zmdi-delete"></i></button>
+                        </form>
+                        <form style="display:contents" action = "<?php echo e(route('movie.edit', $movie->id)); ?>" method="GET">
+                            <?php echo csrf_field(); ?>
+                            <button title="Edit" class="green" type="submit"><i class="zmdi zmdi-edit"></i></button>
+                        </form>
+                    <?php endif; ?>
                 </div>
                 
             </div>

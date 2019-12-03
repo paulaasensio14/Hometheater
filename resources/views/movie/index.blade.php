@@ -11,43 +11,52 @@
 		</div>
 		<input type="text" class="search" placeholder="Search" />
 		<ul class="menu">
-			<li title="" class="selected"><i class="zmdi zmdi-movie"></i> Movies</li>
-			<li title="Ladies Night"><i class="zmdi zmdi-female"></i> People</li>
-            <li title="Family Friday">
-                <i class="zmdi zmdi-accounts-alt"></i> Users</li>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			<li class="divider">
-				<i class="zmdi zmdi-account-circle"></i> Login
-			</li>
+			<li class="selected"><a href="{{route('movie.index')}}"><i class="zmdi zmdi-movie"></i> Movies </a></li>
+			<li><a href="{{route('person.index')}}"><i class="zmdi zmdi-accounts-list"></i> People</a></li>
+			<br><br>
+			@guest
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<li><a href="{{route('home')}}"><i class="zmdi zmdi-account-circle"></i> Login </a></li>
+			@endguest
+
+			@auth
+				<br><br><br><br><br><br><br>
+				<li><a href="{{route('user.index')}}"><i class="zmdi zmdi-accounts-alt"></i> Users </a></li>
+				<li><a href="{{route('movie.create')}}"><i class="zmdi zmdi-plus"></i> Add movie </a></li>
+				<li><a href="{{route('user.create')}}"><i class="zmdi zmdi-plus"></i> Add user </a></li>
+				<li><a href="{{route('person.create')}}"><i class="zmdi zmdi-plus"></i> Add person </a></li>
+				<li><a href="{{route('genre.create')}}"><i class="zmdi zmdi-plus"></i> Add genre </a></li>
+				<li>
+					<form id="logout" action="{{url('/logout')}}" method="POST" >
+						@csrf
+						<a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout').submit();"><i class="zmdi zmdi-account-circle"> Logout </i></a>
+					</form>				
+				</li>
+			@endauth
 		</ul>
 	</div>
 	<div class="main-wrap">
 		<div class="main">
 			<div class="list">
-				<div class="scroll">
-					<button class="scrollTop"><i class="zmdi zmdi-arrow-left"></i></button>
-					<button class="scrollDown"><i class="zmdi zmdi-arrow-right"></i></button>
-				</div>
-				<header>
-					<ul class="filter">
+                <header>
+                    <ul class="filter">
                         <li data-gid="," class="selected">All</li>
-                        @foreach ($movieList as $movie)
-                            @foreach ($movie->genres as $genre)
-                                <li>{{$genre->description}}</li>
-                            @endforeach
+                        @foreach ($genreList as $genre)
+                            <li><a href="{{route('genre.show', $genre->id)}}" style="text-decoration: none; color: #444;">{{$genre->description}}</a></li>
                         @endforeach
-					</ul>
-				</header>
-				<div class="content">
+                    </ul>
+                </header>
+                <div class="content">
+                    {{$movieList->links()}}
 					<ul class="covers">
-                        @foreach ($movieList as $movie)
+                    @foreach ($movieList as $movie)
                         <li>
                             <a href="{{route('movie.show', $movie->id)}}"><img src="{{url('covers/'.$movie->cover)}}" alt="{{$movie->title}}"></a>
                             <span>{{$movie->title}}</span>
                             <small>{{$movie->duration}} min</small>
                         </li>
-                        @endforeach
-                    </ul>
+                    @endforeach
+                    </ul>         
 				</div>
 			</div>
 		</div>

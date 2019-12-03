@@ -19,3 +19,7 @@ Route::resource('movie', 'MovieController');
 Route::resource('genre', 'GenreController');
 // RUTAS PERSONAS
 Route::resource('person', 'PersonController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

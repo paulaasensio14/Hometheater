@@ -4,13 +4,6 @@
     
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-    <!--
-    @ if ($errors->any())
-        @ foreach ($errors->all() as $error)
-            { {$error}} <br>
-        @ endforeach"
-    @ endif
-    -->
             
     <?php if(isset($user)): ?>
         <form action="<?php echo e(route('user.update', ['user' => $user->id])); ?>" method="POST">
@@ -22,8 +15,24 @@
     <?php echo csrf_field(); ?> <!-- Seguridad del formulario -->
     User Name:<br>
     <input type="text" name="name" value="<?php echo e($user->name ?? ''); ?>"><br>
+    <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><?php echo e($menssage); ?><?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
     Email: <br>
     <input type="email" name="email" value="<?php echo e($user->email ?? ''); ?>"><br>
+    <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><?php echo e($menssage); ?><?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
     Password: <br>
     <input type="password" name="password" value="<?php echo e($user->password ?? ''); ?>"><br><br>
     <input type="submit" value="Submit">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; // Pagination
 use App\Movie;
 use App\Genre;
 use App\Person;
@@ -11,38 +12,42 @@ class MovieController extends Controller
 {
     // Show All
     public function index() {
-        $movies = Movie::all();
-        return view('movie.index', ['movieList'=>$movies]);
+        $movies = Movie::simplePaginate(6);
+        //$movies = DB::table('movies')->paginate(6);
+        $genres = Genre::all();
+        return view('movie.index', ['movieList'=>$movies, 'genreList'=>$genres]);
     }
 
     // Form create movie
     public function create(){
         $genres = Genre::all();
         $people = Person::all();
-        return view('movie.create', ['genreList'=>$genres, 'personList'=>$people]);
+        return view('movie.form', ['genreList'=>$genres, 'personList'=>$people]);
     }
 
     // Create movie
     public function store(Request $r){
-        /*
+        
         $r->validate([
-            'title'=> 'required', 
-            'year'=> 'required|email', 
-            'duration'=> 'required'
-            'rating'=> 'required'
-            'external_url'=> 'required'
+            'title' => 'required|max:255',
+            //'synopsis' => 'required|max:1024',
+            'year' => 'required|digits:4',
+            'rating' => 'required|digits_between:1,10',
+            'cover' => 'image|mimes:jpeg,jpg,png,gif,svg',
+            'external_url' => 'url',
+            'filepath' => 'required|max:255',
+            'filename' => 'required|max:255',
+            'actors' => 'array',
+            'directors' => 'array',
+            'genres' => 'array'
         ]);
-        */
 
         $movie = new Movie($r->all());
-        /**
-         * Cover
-         * Storage::move('ruta donde vas a guardar el archivo en la carpeta publica', 'nombre del fichero');
-         */
         
+        /* Cover */
         if ($r->hasFile('cover')) {
             $r->file('cover')->move('covers', $r->file('cover')->getClientOriginalName());
-            // Para guardarla en la base de datos
+            // save in DB
             $move->cover = $r->file('cover')->getClientOriginalName();
         }
 
@@ -65,7 +70,7 @@ class MovieController extends Controller
         $movie->fill($r->all());
         // Cover
         if($r->hasFile('cover')){
-            File::delete(public_path('covers/'.$movie->cover));
+            File::delete(public_path('/covers/'.$movie->cover));
             $r->file('cover')->move('covers', $r->file('cover')->getClientOriginalName());
             $movie->cover = $r->file('cover')->getClientOriginalName();
         }
@@ -81,7 +86,7 @@ class MovieController extends Controller
         $movie = Movie::find($id);
         $genres = Genre::all();
         $people = Person::all();
-        return view('movie.create', array('movie' => $movie), ['genreList'=>$genres, 'personList'=>$people]);
+        return view('movie.form', array('movie' => $movie), ['genreList'=>$genres, 'personList'=>$people]);
     }
 
     // Delete user
@@ -94,4 +99,5 @@ class MovieController extends Controller
         $movie->delete();
         return redirect()->route('movie.index');
     }
+
 }

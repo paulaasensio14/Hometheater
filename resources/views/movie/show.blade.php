@@ -42,6 +42,17 @@
                 <div class="card_right__button">
                     <a class="red" href="{{url($movie->filepath.$movie->filename)}}">WATCH TRAILER</a>
                     <a class="green" href="{{route('movie.index')}}">BACK HOME</a>
+                    @auth    
+                        <form style="display:contents" action = "{{route('movie.destroy', $movie->id)}}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <button title="Delete" class="red" type="submit"><i class="zmdi zmdi-delete"></i></button>
+                        </form>
+                        <form style="display:contents" action = "{{route('movie.edit', $movie->id)}}" method="GET">
+                            @csrf
+                            <button title="Edit" class="green" type="submit"><i class="zmdi zmdi-edit"></i></button>
+                        </form>
+                    @endauth
                 </div>
                 
             </div>

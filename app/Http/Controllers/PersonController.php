@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; // Pagination
 use App\Person;
 use App\Movie;
 
@@ -10,26 +11,25 @@ class PersonController extends Controller
 {
     // Show All
     public function index() {
-        $people = Person::all();
-        return view('person.page', ['peopleList'=>$people]);
+        $people = Person::simplePaginate(6);
+        return view('person.index', ['peopleList'=>$people]);
     }
 
     // Form create
     public function create(){
-        //$people = Person::all();
-        return view('person.create');
-        //return view('person.create', ['peopleList'=>$people]);
+        return view('person.form');
     }
 
     // Create
     public function store(Request $r){
-        /*
+        
         $r->validate([
-            'name'=> 'required', 
-            'email'=> 'required|email', 
-            'password'=> 'required'
+            'name' => 'required|max:255',
+            'photo' => 'image|mimes:jpeg,jpg,png,gif,svg',
+            'external_url' => 'url',
+            'act' => 'array',
+            'direct' => 'array'
         ]);
-        */
 
         $person = new Person($r->all());
         // Photos
@@ -40,7 +40,6 @@ class PersonController extends Controller
             $person->photo = $r->file('photo')->getClientOriginalName();
         }
         $person->save();
-        //$person->genres()->attach($r->genres);
         return redirect()->route('person.index');
     }
 
@@ -60,7 +59,6 @@ class PersonController extends Controller
             $r->file('photo')->move('photos', $r->file('photo')->getClientOriginalName());
             $person->photo = $r->file('photo')->getClientOriginalName();
         }
-        //$person->genres()->sync($r->genres);
         $person->save();
         return redirect()->route('person.index');
     }
@@ -68,16 +66,13 @@ class PersonController extends Controller
     // Form update
     public function edit($id){
         $person = Person::find($id);
-        //$genres = Genre::all();
-        return view('person.create', array('person' => $person));
-        //return view('person.create', array('person' => $person), ['genreList'=>$genres]);
+        return view('person.form', array('person' => $person));
     }
 
     // Delete user
     public function destroy($id){
         $person = Person::find($id);
         File::delete(public_path('photos/'.$person->photo));
-        //$person->genres()->detach();
         $person->delete();
         return redirect()->route('person.index');
     }
