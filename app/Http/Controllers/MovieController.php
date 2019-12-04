@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // Pagination
 use App\Movie;
@@ -50,9 +51,13 @@ class MovieController extends Controller
         
         /* Cover */
         if ($r->hasFile('cover')) {
-            $r->file('cover')->move('covers', $r->file('cover')->getClientOriginalName());
+            /*$r->file('cover')->move('covers', $r->file('cover')->getClientOriginalName());
             // save in DB
-            $move->cover = $r->file('cover')->getClientOriginalName();
+            $move->cover = $r->file('cover')->getClientOriginalName();*/
+            $file = $r->file('cover');
+            $name = $file->getClientOriginalName();
+            Storage::disk('covers')->put($name, File::get($file));
+            $movie->cover = $name;
         }
 
         $movie->save();

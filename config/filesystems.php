@@ -64,6 +64,12 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'covers' => [
+            'driver' => 'local',
+            'root' => 'covers',
+            'visibility' => 'private',
+        ],
+
     ],
 
 ];
