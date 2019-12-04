@@ -16,7 +16,7 @@
 			<br><br>
 			@guest
 				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-				<li><a href="{{route('home')}}"><i class="zmdi zmdi-account-circle"></i> Login </a></li>
+				<li><a href="{{route('login')}}"><i class="zmdi zmdi-account-circle"></i> Login </a></li>
 			@endguest
 
 			@auth

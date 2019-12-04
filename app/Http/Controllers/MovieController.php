@@ -35,7 +35,6 @@ class MovieController extends Controller
         
         $r->validate([
             'title' => 'required|max:255',
-            //'synopsis' => 'required|max:1024',
             'year' => 'required|digits:4',
             'rating' => 'required|digits_between:1,10',
             'cover' => 'image|mimes:jpeg,jpg,png,gif,svg',
@@ -51,9 +50,6 @@ class MovieController extends Controller
         
         /* Cover */
         if ($r->hasFile('cover')) {
-            /*$r->file('cover')->move('covers', $r->file('cover')->getClientOriginalName());
-            // save in DB
-            $move->cover = $r->file('cover')->getClientOriginalName();*/
             $file = $r->file('cover');
             $name = $file->getClientOriginalName();
             Storage::disk('covers')->put($name, File::get($file));

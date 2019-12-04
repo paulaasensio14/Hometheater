@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/','MovieController@index');
 // RUTAS USUARIO
 Route::resource('user', 'UserController');
 // RUTAS PELICULAS
@@ -22,4 +23,3 @@ Route::resource('person', 'PersonController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

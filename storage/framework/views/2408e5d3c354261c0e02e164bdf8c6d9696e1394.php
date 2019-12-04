@@ -14,7 +14,7 @@
 			<br><br>
 			<?php if(auth()->guard()->guest()): ?>
 				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-				<li><a href="<?php echo e(route('home')); ?>"><i class="zmdi zmdi-account-circle"></i> Login </a></li>
+				<li><a href="<?php echo e(route('login')); ?>"><i class="zmdi zmdi-account-circle"></i> Login </a></li>
 			<?php endif; ?>
 
 			<?php if(auth()->guard()->check()): ?>
