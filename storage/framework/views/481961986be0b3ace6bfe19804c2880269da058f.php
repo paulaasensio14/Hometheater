@@ -55,7 +55,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Photo: <br>
 						<input type="file" name="photo"><br>
 						<?php $__errorArgs = ['photo'];
@@ -65,7 +65,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						External URL: <br>
 						<input type="text" name="external_url" value="<?php echo e($person->external_url ?? ''); ?>"><br>
 						<?php $__errorArgs = ['external_url'];
@@ -75,7 +75,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						<br>
 						<input type="submit" value="submit">
 						</form>

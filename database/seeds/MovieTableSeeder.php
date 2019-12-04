@@ -172,7 +172,7 @@ class MovieTableSeeder extends Seeder
             'rating' => '6.2',
             'cover' => 'padrenohaymasqueuno.jpg',
             'filepath' => '/movies/',
-            'filename' => 'thefaultinourstar.mp4',
+            'filename' => 'padrenohaymasqueuno.mp4',
             'external_url' => 'https://www.imdb.com/title/tt9427166/?ref_=nv_sr_srsg_0',
         ]);
 
@@ -183,7 +183,7 @@ class MovieTableSeeder extends Seeder
             'rating' => '6.8',
             'cover' => 'descendientes3.jpg',
             'filepath' => '/movies/',
-            'filename' => 'thefaultinourstar.mp4',
+            'filename' => 'losdescendientes3.mp4',
             'external_url' => 'https://www.imdb.com/title/tt8022928/?ref_=nv_sr_srsg_5',
         ]);
     }

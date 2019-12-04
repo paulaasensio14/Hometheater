@@ -50,7 +50,8 @@
 						@csrf <!-- Seguridad del formulario -->
 						Genre:<br>
 						<input type="text" name="description" value="{{$genre->description ?? ''}}"><br><br>
-						<input type="submit" value="submit">
+						@error('description'){{$message}}@enderror <br>
+						<input type="submit" value="submit"> 
 						</form>
                     </ul>         
 				</div>

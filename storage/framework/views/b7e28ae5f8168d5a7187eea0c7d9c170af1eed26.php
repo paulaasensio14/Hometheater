@@ -22,9 +22,9 @@
                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                         Vivamus ullamcorper, libero id iaculis ultrices, turpis mauris pretium augue, 
                         vitae scelerisque tortor purus nec tortor. Phasellus aliquet eu erat ac sagittis. 
-                        Integer mattis ante urna, id vulputate lacus convallis id. Vivamus eu luctus leo, 
-                        nec consequat sem.
+                        Integer mattis ante urna, id vulputate lacus convallis id.
                     </p>
+                    <p><a style="padding: 0;" href="<?php echo e($movie->external_url); ?>">Read more...</a></p>
                 </div>
                 <div class="people">
                     <li>Actors</li><br>

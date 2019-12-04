@@ -55,7 +55,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Year: <br>
 						<input type="number" name="year" value="<?php echo e($movie->year ?? ''); ?>"><br>
 						<?php $__errorArgs = ['year'];
@@ -65,7 +65,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Duration: <br>
 						<input type="number" name="duration" value="<?php echo e($movie->duration ?? ''); ?>"><br>
 						<?php $__errorArgs = ['duration'];
@@ -75,7 +75,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Rating: <br>
 						<input type="number" name="rating" value="<?php echo e($movie->rating ?? ''); ?>"><br>
 						<?php $__errorArgs = ['rating'];
@@ -85,7 +85,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Cover: <br>
 						<input type="file" name="cover"><br>
 						<?php $__errorArgs = ['cover'];
@@ -95,7 +95,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Filepath: <br>
 						<input type="text" name="filepath" value="<?php echo e($movie->filepath ?? ''); ?>"><br>
 						<?php $__errorArgs = ['filepath'];
@@ -105,7 +105,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Filename: <br>
 						<input type="text" name="filename" value="<?php echo e($movie->filename ?? ''); ?>"><br>
 						<?php $__errorArgs = ['filename'];
@@ -115,7 +115,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						External URL: <br>
 						<input type="text" name="external_url" value="<?php echo e($movie->external_url ?? ''); ?>"><br>
 						<?php $__errorArgs = ['external_url'];
@@ -125,7 +125,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Genres: <br>
 						<?php $__currentLoopData = $genreList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							<input type="checkbox" name="genres[]" value="<?php echo e($genre->id ?? ''); ?>"
@@ -141,7 +141,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						<br>
 						Actors: <br>
 						<?php $__currentLoopData = $personList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $people): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -158,7 +158,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						<br>
 						Directors: <br>
 						<?php $__currentLoopData = $personList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $people): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -175,7 +175,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						<br>
 						<input type="submit" value="submit">
 						</form>

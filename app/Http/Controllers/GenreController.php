@@ -8,10 +8,14 @@ use App\Genre;
 
 class GenreController extends Controller
 {
+    public function __construct() {
+        $this->middleware("auth")->except("index", "show");
+    }
+
     // Show All
     public function index() {
-        $genres = Genre::all();
-        return view('genre.page', ['genreList'=>$genres]);
+        $genres = Genre::simplePaginate(21);
+        return view('genre.index', ['genreList'=>$genres]);
     }
 
     // Form create
@@ -21,6 +25,9 @@ class GenreController extends Controller
 
     // Create
     public function store(Request $r){
+        $r->validate([
+            'description' => 'required|max:50',
+        ]);
 
         $genre = new Genre($r->all());
         
@@ -31,8 +38,9 @@ class GenreController extends Controller
     // Show one
     public function show($id){
         $genreList = Genre::all()->sortBy('description');
-        $movie = DB::select(DB::raw("SELECT DISTINCT movies.* FROM movies INNER JOIN genres_movies ON movies.id = genres_movies.id_movies WHERE genres_movies.id_genres = $id ORDER BY movies.year DESC"));
-        return view('movie.index', ['movieList'=>$movie, 'genreList'=>$genreList]);
+        //$movie = DB::select(DB::raw("SELECT DISTINCT movies.* FROM movies INNER JOIN genres_movies ON movies.id = genres_movies.id_movies WHERE genres_movies.id_genres = $id ORDER BY movies.year DESC"));
+        //return view('movie.index', ['movieList'=>$movie, 'genreList'=>$genreList]);
+        return view('genre.index', ['genreList'=>$genreList]);
     }
 
     // Update

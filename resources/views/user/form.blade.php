@@ -50,10 +50,10 @@
 						@csrf
 						User Name:<br>
 						<input type="text" name="name" value="{{$user->name ?? ''}}"><br>
-						@error('name'){{$message}}@enderror
+						@error('name'){{$message}}@enderror <br>
 						Email: <br>
 						<input type="email" name="email" value="{{$user->email ?? ''}}"><br>
-						@error('email'){{$message}}@enderror
+						@error('email'){{$message}}@enderror <br>
 						Password: <br>
 						<input type="password" name="password" value="{{$user->password ?? ''}}"><br><br>
 						<input type="submit" value="Submit">

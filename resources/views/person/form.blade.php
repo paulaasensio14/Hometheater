@@ -50,13 +50,13 @@
 						@csrf
 						Name:<br>
 						<input type="text" name="name" value="{{$person->name ?? ''}}"><br>
-						@error('name'){{$message}}@enderror
+						@error('name'){{$message}}@enderror <br>
 						Photo: <br>
 						<input type="file" name="photo"><br>
-						@error('photo'){{$message}}@enderror
+						@error('photo'){{$message}}@enderror <br>
 						External URL: <br>
 						<input type="text" name="external_url" value="{{ $person->external_url ?? '' }}"><br>
-						@error('external_url'){{$message}}@enderror
+						@error('external_url'){{$message}}@enderror <br>
 						<br>
 						<input type="submit" value="submit">
 						</form>

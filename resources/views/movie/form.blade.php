@@ -50,28 +50,28 @@
 						@csrf
 						Movie title:<br>
 						<input type="text" name="title" value="{{$movie->title ?? ''}}"><br>
-						@error('title'){{$message}}@enderror
+						@error('title'){{$message}}@enderror <br>
 						Year: <br>
 						<input type="number" name="year" value="{{ $movie->year ?? '' }}"><br>
-						@error('year'){{$message}}@enderror
+						@error('year'){{$message}}@enderror <br>
 						Duration: <br>
 						<input type="number" name="duration" value="{{ $movie->duration ?? '' }}"><br>
-						@error('duration'){{$message}}@enderror
+						@error('duration'){{$message}}@enderror <br>
 						Rating: <br>
 						<input type="number" name="rating" value="{{ $movie->rating ?? '' }}"><br>
-						@error('rating'){{$message}}@enderror
+						@error('rating'){{$message}}@enderror <br>
 						Cover: <br>
 						<input type="file" name="cover"><br>
-						@error('cover'){{$message}}@enderror
+						@error('cover'){{$message}}@enderror <br>
 						Filepath: <br>
 						<input type="text" name="filepath" value="{{ $movie->filepath ?? '' }}"><br>
-						@error('filepath'){{$message}}@enderror
+						@error('filepath'){{$message}}@enderror <br>
 						Filename: <br>
 						<input type="text" name="filename" value="{{ $movie->filename ?? '' }}"><br>
-						@error('filename'){{$message}}@enderror
+						@error('filename'){{$message}}@enderror <br>
 						External URL: <br>
 						<input type="text" name="external_url" value="{{ $movie->external_url ?? '' }}"><br>
-						@error('external_url'){{$message}}@enderror
+						@error('external_url'){{$message}}@enderror <br>
 						Genres: <br>
 						@foreach ($genreList as $genre)
 							<input type="checkbox" name="genres[]" value="{{$genre->id ?? ''}}"
@@ -80,7 +80,7 @@
 							@endif
 							> {{$genre->description}} <br>
 						@endforeach
-						@error('genres'){{$message}}@enderror
+						@error('genres'){{$message}}@enderror <br>
 						<br>
 						Actors: <br>
 						@foreach ($personList as $people)
@@ -90,7 +90,7 @@
 							@endif
 							> {{$people->name}} <br>
 						@endforeach
-						@error('actors'){{$message}}@enderror
+						@error('actors'){{$message}}@enderror <br>
 						<br>
 						Directors: <br>
 						@foreach ($personList as $people)
@@ -100,7 +100,7 @@
 							@endif
 							> {{$people->name}} <br>
 						@endforeach
-						@error('directors'){{$message}}@enderror
+						@error('directors'){{$message}}@enderror <br>
 						<br>
 						<input type="submit" value="submit">
 						</form>

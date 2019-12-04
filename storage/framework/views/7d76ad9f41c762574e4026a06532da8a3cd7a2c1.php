@@ -55,7 +55,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Email: <br>
 						<input type="email" name="email" value="<?php echo e($user->email ?? ''); ?>"><br>
 						<?php $__errorArgs = ['email'];
@@ -65,7 +65,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?> <br>
 						Password: <br>
 						<input type="password" name="password" value="<?php echo e($user->password ?? ''); ?>"><br><br>
 						<input type="submit" value="Submit">

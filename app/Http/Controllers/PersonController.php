@@ -9,6 +9,10 @@ use App\Movie;
 
 class PersonController extends Controller
 {
+    public function __construct() {
+        $this->middleware("auth")->except("index", "show");
+    }
+
     // Show All
     public function index() {
         $people = Person::simplePaginate(6);
